@@ -32,19 +32,21 @@ scp index.html styles.css your-username@your-server-ip:/path/to/website/
 
 ## Quick Deploy Script (if you have SSH access)
 
-Save this as `deploy.ps1` and run it:
+**SECURITY NOTE:** For security, credentials are kept locally and NOT committed to GitHub.
 
-```powershell
-# Configuration - UPDATE THESE VALUES
-$SERVER_USER = "your-username"
-$SERVER_IP = "your-server-ip"
-$SERVER_PATH = "/path/to/website/"
+1. Copy the template file:
+   ```powershell
+   Copy-Item deploy-to-server.template.ps1 deploy-to-server.ps1
+   ```
 
-# Deploy files
-Write-Host "Deploying to moodyspritestudios.com..." -ForegroundColor Green
-scp index.html styles.css "${SERVER_USER}@${SERVER_IP}:${SERVER_PATH}"
-Write-Host "Deployment complete! Clear your browser cache." -ForegroundColor Green
-```
+2. Edit `deploy-to-server.ps1` (this file is in .gitignore)
+   - Update SERVER_USER, SERVER_IP, and SERVER_PATH
+   - Save the file
+
+3. Run the script:
+   ```powershell
+   .\deploy-to-server.ps1
+   ```
 
 ---
 

@@ -1,1 +1,4 @@
 .cortex/
+
+# Deployment scripts with credentials
+deploy-to-server.ps1

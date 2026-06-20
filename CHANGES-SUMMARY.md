@@ -39,9 +39,9 @@ Added complete styling for:
 
 ## Quick Upload Options
 
-### Option A: Use the Deploy Script
-1. Open `deploy-to-server.ps1`
-2. Edit the configuration at the top (username, IP, path)
+### Option A: Use the Deploy Script (SECURE)
+1. Copy the template: `Copy-Item deploy-to-server.template.ps1 deploy-to-server.ps1`
+2. Edit `deploy-to-server.ps1` with your server info (this file stays local, not on GitHub)
 3. Run: `.\deploy-to-server.ps1`
 
 ### Option B: Manual Upload via SFTP

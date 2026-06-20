@@ -1,5 +1,6 @@
 # Quick Deploy Script for moodyspritestudios.com
-# Update the configuration below, then run: .\deploy-to-server.ps1
+# TEMPLATE FILE - Copy this to 'deploy-to-server.ps1' and add your credentials
+# The actual deploy-to-server.ps1 is in .gitignore for security
 
 # ============================================
 # CONFIGURATION - EDIT THESE VALUES
