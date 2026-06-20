@@ -220,22 +220,42 @@ function showWeatherError() {
 const hamburger = document.querySelector('.hamburger');
 const navMenu = document.querySelector('.nav-menu');
 
-hamburger.addEventListener('click', () => {
+// Touch and click support for hamburger menu
+const toggleMenu = () => {
     hamburger.classList.toggle('active');
     navMenu.classList.toggle('active');
-
-    // This is where we add body scroll lock when mobile menu is open
     document.body.classList.toggle('menu-open');
-});
+};
+
+hamburger.addEventListener('click', toggleMenu);
+// Add touch event for better mobile responsiveness
+hamburger.addEventListener('touchstart', (e) => {
+    e.preventDefault();
+    toggleMenu();
+}, { passive: false });
 
 // This is where we close mobile menu when clicking on a links
 document.querySelectorAll('.nav-link').forEach(link => {
-    link.addEventListener('click', () => {
+    const closeMenu = () => {
         hamburger.classList.remove('active');
         navMenu.classList.remove('active');
         document.body.classList.remove('menu-open');
-    });
+    };
+    
+    link.addEventListener('click', closeMenu);
 });
+
+// Close menu when clicking outside on mobile
+document.addEventListener('click', (e) => {
+    if (navMenu.classList.contains('active') && 
+        !hamburger.contains(e.target) && 
+        !navMenu.contains(e.target)) {
+        hamburger.classList.remove('active');
+        navMenu.classList.remove('active');
+        document.body.classList.remove('menu-open');
+    }
+});
+
 // This is where we enhance smooth scrolling for navigation links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {

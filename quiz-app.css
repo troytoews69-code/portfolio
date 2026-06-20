@@ -8,6 +8,12 @@
     box-sizing: border-box;
 }
 
+html {
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+}
+
 :root {
     --primary-color: #6366f1;
     --primary-dark: #4f46e5;
@@ -26,17 +32,23 @@
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
     background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 100%);
     color: var(--text-primary);
     min-height: 100vh;
     line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+    padding-bottom: env(safe-area-inset-bottom);
+    touch-action: manipulation;
 }
 
 .container {
     max-width: 1000px;
     margin: 0 auto;
     padding: 20px;
+    width: 100%;
 }
 
 /* ==============================================
@@ -639,7 +651,18 @@ body {
    THIS IS RESPONSIVE DESIGN AREA
    =================================================== */
 
+/* iOS Safari specific fixes */
+@supports (-webkit-touch-callout: none) {
+    .container {
+        padding-bottom: env(safe-area-inset-bottom);
+    }
+}
+
 @media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+    
     .welcome-card,
     .results-card {
         padding: 30px 20px;
@@ -665,6 +688,8 @@ body {
     .answer-btn {
         padding: 15px 20px;
         font-size: 1rem;
+        min-height: 44px;
+        -webkit-tap-highlight-color: transparent;
     }
 
     .results-stats {
@@ -675,4 +700,59 @@ body {
         flex-direction: column;
         text-align: center;
     }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 10px;
+    }
+    
+    .quiz-container {
+        padding: 15px;
+    }
+    
+    #questionText {
+        font-size: 1.1rem;
+    }
+    
+    .answer-btn {
+        padding: 14px 16px;
+        font-size: 0.95rem;
+    }
+    
+    .app-header {
+        padding: 15px;
+    }
+}
+
+/* Extra small devices */
+@media (max-width: 360px) {
+    .welcome-card h2,
+    .results-card h2 {
+        font-size: 1.75rem;
+    }
+    
+    #questionText {
+        font-size: 1rem;
+    }
+}
+
+/* Landscape orientation for phones */
+@media (max-height: 500px) and (orientation: landscape) {
+    .quiz-container {
+        padding: 15px;
+    }
+    
+    #questionText {
+        font-size: 1rem;
+    }
+}
+
+/* Touch-friendly improvements */
+button, input, select {
+    min-height: 44px;
+}
+
+input, textarea {
+    font-size: 16px; /* Prevents zoom on iOS */
 }

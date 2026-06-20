@@ -8,6 +8,12 @@
     box-sizing: border-box;
 }
 
+html {
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+}
+
 :root {
     --primary-color: #3b82f6;
     --primary-dark: #2563eb;
@@ -26,17 +32,23 @@
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
     background: linear-gradient(135deg, #0f172a 0%, #1e3a5f 100%);
     color: var(--text-primary);
     min-height: 100vh;
     line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+    padding-bottom: env(safe-area-inset-bottom);
+    touch-action: manipulation;
 }
 
 .container {
     max-width: 1400px;
     margin: 0 auto;
     padding: 20px;
+    width: 100%;
 }
 
 /* ==============================================
@@ -572,6 +584,13 @@ body {
    THIS IS THE RESPONSIVE DESIGN AREA
    ============================================== */
 
+/* iOS Safari specific fixes */
+@supports (-webkit-touch-callout: none) {
+    .container {
+        padding-bottom: env(safe-area-inset-bottom);
+    }
+}
+
 @media (max-width: 1024px) {
     .weather-main {
         grid-template-columns: 1fr;
@@ -588,6 +607,10 @@ body {
 }
 
 @media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+    
     .header-content {
         flex-direction: column;
     }
@@ -595,6 +618,10 @@ body {
     .search-container {
         width: 100%;
         max-width: 100%;
+    }
+    
+    .search-input {
+        font-size: 16px;
     }
 
     .logo {
@@ -623,4 +650,59 @@ body {
         flex-direction: column;
         text-align: center;
     }
+    
+    button {
+        min-height: 44px;
+        min-width: 44px;
+        -webkit-tap-highlight-color: transparent;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 10px;
+    }
+    
+    .app-header {
+        padding: 15px;
+    }
+    
+    .temp-main {
+        font-size: 3rem;
+    }
+    
+    .weather-details {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Extra small devices */
+@media (max-width: 360px) {
+    .temp-main {
+        font-size: 2.5rem;
+    }
+    
+    .logo h1 {
+        font-size: 1.25rem;
+    }
+}
+
+/* Landscape orientation for phones */
+@media (max-height: 500px) and (orientation: landscape) {
+    .app-header {
+        padding: 15px;
+    }
+    
+    .weather-current {
+        padding: 20px;
+    }
+}
+
+/* Touch-friendly improvements */
+button, input, select {
+    min-height: 44px;
+}
+
+input, textarea, select {
+    font-size: 16px; /* Prevents zoom on iOS */
 }

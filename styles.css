@@ -7,19 +7,27 @@
 
 html {
     scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    text-size-adjust: 100%;
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
     line-height: 1.6;
     color: #333;
     overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    min-height: 100vh;
+    position: relative;
 }
 
 .container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 0 20px;
+    width: 100%;
 }
 
 /* This is the typography */
@@ -52,6 +60,8 @@ p {
 .btn {
     display: inline-block;
     padding: 12px 24px;
+    min-height: 44px;
+    min-width: 44px;
     border: none;
     border-radius: 8px;
     text-decoration: none;
@@ -60,6 +70,8 @@ p {
     transition: all 0.3s ease;
     cursor: pointer;
     font-size: 1rem;
+    touch-action: manipulation;
+    -webkit-tap-highlight-color: transparent;
 }
 
 .btn-primary {
@@ -92,9 +104,11 @@ p {
     right: 0;
     background: rgba(255, 255, 255, 0.95);
     backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     z-index: 1000;
     padding: 1rem 0;
     transition: all 0.3s ease;
+    padding-top: max(1rem, env(safe-area-inset-top));
 }
 
 .navbar.scrolled {
@@ -1391,9 +1405,112 @@ section {
 }
 
 /* This is the Responsive Design section */
+
+/* iOS Safari specific fixes */
+@supports (-webkit-touch-callout: none) {
+    body {
+        padding-bottom: env(safe-area-inset-bottom);
+    }
+    
+    .navbar {
+        padding-top: calc(1rem + env(safe-area-inset-top));
+    }
+}
+
+/* Large screens and TVs (1920px and above) */
+@media (min-width: 1920px) {
+    .container {
+        max-width: 1600px;
+    }
+    
+    h1 {
+        font-size: 4rem;
+    }
+    
+    h2 {
+        font-size: 3rem;
+    }
+    
+    .hero {
+        padding: 180px 20px 120px;
+    }
+    
+    .profile-photo {
+        width: 400px;
+        height: 400px;
+    }
+    
+    section {
+        padding: 120px 0;
+    }
+}
+
+/* Desktop and large tablets (1024px - 1919px) */
+@media (min-width: 1024px) and (max-width: 1919px) {
+    .container {
+        max-width: 1140px;
+    }
+}
+
+/* Tablets in landscape (992px - 1023px) */
+@media (min-width: 992px) and (max-width: 1023px) {
+    .container {
+        max-width: 960px;
+    }
+    
+    .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .projects-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Tablets in portrait (768px - 991px) */
+@media (min-width: 768px) and (max-width: 991px) {
+    .container {
+        max-width: 720px;
+    }
+    
+    h1 {
+        font-size: 2.75rem;
+    }
+    
+    h2 {
+        font-size: 2.25rem;
+    }
+    
+    .hero {
+        padding: 140px 20px 80px;
+    }
+    
+    .profile-photo {
+        width: 280px;
+        height: 280px;
+    }
+    
+    .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .projects-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .about-content {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+}
+
+/* Mobile devices and small tablets (max-width: 768px) */
 @media (max-width: 768px) {
     .hamburger {
         display: flex;
+        min-width: 44px;
+        min-height: 44px;
+        padding: 10px;
     }
 
     .nav-menu {
@@ -1407,6 +1524,9 @@ section {
         transition: 0.3s;
         box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
         padding: 2rem 0;
+        max-height: calc(100vh - 70px);
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
     }
 
     .nav-menu.active {
@@ -1502,10 +1622,42 @@ section {
 
     .btn {
         width: 100%;
-        max-width: 200px;
+        max-width: 280px;
+        padding: 14px 24px;
+    }
+    
+    /* Improve touch targets */
+    .nav-link {
+        padding: 1rem;
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .theme-toggle {
+        min-width: 44px;
+        min-height: 44px;
     }
 }
 
+/* Large phones in landscape (568px - 767px) */
+@media (min-width: 568px) and (max-width: 767px) and (orientation: landscape) {
+    .hero {
+        padding: 100px 20px 40px;
+    }
+    
+    .profile-photo {
+        width: 180px;
+        height: 180px;
+    }
+    
+    section {
+        padding: 50px 0;
+    }
+}
+
+/* Small phones (max-width: 480px) */
 @media (max-width: 480px) {
     .container {
         padding: 0 15px;
@@ -1540,6 +1692,90 @@ section {
 
     .contact-form {
         padding: 1.5rem;
+    }
+    
+    .btn {
+        padding: 16px 24px;
+        font-size: 1rem;
+    }
+    
+    /* Ensure all interactive elements are touch-friendly */
+    button, a, input, textarea, select {
+        min-height: 44px;
+    }
+    
+    input, textarea {
+        font-size: 16px; /* Prevents zoom on iOS */
+    }
+}
+
+/* Extra small devices (max-width: 360px) */
+@media (max-width: 360px) {
+    h1 {
+        font-size: 1.75rem;
+    }
+    
+    h2 {
+        font-size: 1.5rem;
+    }
+    
+    .container {
+        padding: 0 10px;
+    }
+    
+    .profile-photo {
+        width: 180px;
+        height: 180px;
+    }
+    
+    .about-photo {
+        width: 180px;
+        height: 180px;
+    }
+    
+    section {
+        padding: 40px 0;
+    }
+}
+
+/* Landscape orientation optimization for all mobile devices */
+@media (max-height: 500px) and (orientation: landscape) {
+    .hero {
+        padding: 80px 20px 40px;
+    }
+    
+    .profile-photo {
+        width: 150px;
+        height: 150px;
+    }
+    
+    section {
+        padding: 40px 0;
+    }
+    
+    h1 {
+        font-size: 1.75rem;
+    }
+}
+
+/* Fix for images on all devices */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Prevent text from being too small on any device */
+@media (max-width: 768px) {
+    body {
+        font-size: 16px;
+    }
+}
+
+/* High DPI displays (Retina) */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    body {
+        -webkit-font-smoothing: antialiased;
     }
 }
 
@@ -1757,4 +1993,71 @@ section {
 
 [data-theme="dark"] ::-webkit-scrollbar-thumb {
     background: linear-gradient(135deg, #4a7c59 0%, #2d5a27 100%);
+}
+
+/* ==============================================
+   MOBILE MENU BODY SCROLL LOCK
+   ============================================== */
+body.menu-open {
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+}
+
+/* ==============================================
+   ACCESSIBILITY & PERFORMANCE IMPROVEMENTS
+   ============================================== */
+
+/* Focus styles for keyboard navigation */
+a:focus, button:focus, input:focus, textarea:focus, select:focus {
+    outline: 2px solid #4a7c59;
+    outline-offset: 2px;
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* Improve performance with will-change */
+.hamburger,
+.nav-menu,
+.btn,
+.project-card,
+.skill-card {
+    will-change: transform;
+}
+
+/* Print styles */
+@media print {
+    .navbar,
+    .hamburger,
+    .theme-toggle,
+    .scroll-to-top {
+        display: none;
+    }
+    
+    body {
+        background: white;
+        color: black;
+    }
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    body {
+        background: white;
+        color: black;
+    }
+    
+    .btn {
+        border: 2px solid currentColor;
+    }
 }

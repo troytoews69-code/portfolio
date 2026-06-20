@@ -8,6 +8,12 @@
     box-sizing: border-box;
 }
 
+html {
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+}
+
 :root {
     --primary-color: #6366f1;
     --primary-dark: #4f46e5;
@@ -30,12 +36,17 @@
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
     background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
     color: var(--text-primary);
     min-height: 100vh;
     line-height: 1.6;
     transition: all 0.3s ease;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+    padding-bottom: env(safe-area-inset-bottom);
+    touch-action: manipulation;
 }
 
 body.light-theme {
@@ -472,6 +483,13 @@ body.light-theme {
    THIS IS WHERE RESPONSIVE DESIGN IS LOCATED
    ================================================= */
 
+/* iOS Safari specific fixes */
+@supports (-webkit-touch-callout: none) {
+    .container {
+        padding-bottom: env(safe-area-inset-bottom);
+    }
+}
+
 @media (max-width: 1024px) {
     .calculator-container {
         grid-template-columns: 1fr;
@@ -483,6 +501,10 @@ body.light-theme {
 }
 
 @media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+    
     .calculator {
         padding: 20px;
     }
@@ -494,6 +516,9 @@ body.light-theme {
     .btn {
         padding: 20px;
         font-size: 1.3rem;
+        min-height: 44px;
+        min-width: 44px;
+        -webkit-tap-highlight-color: transparent;
     }
 
     .advanced-functions {
@@ -507,6 +532,10 @@ body.light-theme {
 }
 
 @media (max-width: 480px) {
+    .container {
+        padding: 10px;
+    }
+    
     .buttons-grid {
         gap: 8px;
     }
@@ -525,4 +554,45 @@ body.light-theme {
         padding: 12px 8px;
         font-size: 0.9rem;
     }
+    
+    .app-header {
+        padding: 15px;
+    }
+}
+
+/* Extra small devices */
+@media (max-width: 360px) {
+    .btn {
+        padding: 16px 8px;
+        font-size: 1.1rem;
+    }
+    
+    .display-current {
+        font-size: 1.75rem;
+    }
+}
+
+/* Landscape orientation for phones */
+@media (max-height: 500px) and (orientation: landscape) {
+    .calculator {
+        padding: 15px;
+    }
+    
+    .display {
+        padding: 15px;
+    }
+    
+    .btn {
+        padding: 12px;
+        font-size: 1.1rem;
+    }
+}
+
+/* Touch-friendly improvements */
+button, input, select {
+    min-height: 44px;
+}
+
+input, textarea {
+    font-size: 16px; /* Prevents zoom on iOS */
 }
