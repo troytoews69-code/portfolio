@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Troy Lussier - Resume</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Calibri', 'Arial', sans-serif;
+            line-height: 1.4;
+            color: #000;
+            background: #fff;
+            max-width: 8.5in;
+            margin: 0 auto;
+            padding: 0.5in 0.75in;
+            font-size: 10.5pt;
+        }
+
+        a {
+            color: #0066cc;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 12px;
+        }
+
+        .header h1 {
+            font-size: 22pt;
+            font-weight: bold;
+            color: #000;
+            margin-bottom: 4px;
+        }
+
+        .contact-info {
+            font-size: 10pt;
+            color: #000;
+            line-height: 1.3;
+        }
+
+        h2 {
+            font-size: 12pt;
+            font-weight: bold;
+            color: #000;
+            text-transform: uppercase;
+            margin-top: 12px;
+            margin-bottom: 8px;
+            border-bottom: 1px solid #000;
+            padding-bottom: 2px;
+        }
+
+        .highlights-list {
+            margin-left: 20px;
+            margin-bottom: 10px;
+        }
+
+        .highlights-list li {
+            margin-bottom: 4px;
+            font-size: 10.5pt;
+            line-height: 1.4;
+        }
+
+        .skills-text {
+            font-size: 10.5pt;
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+
+        .project {
+            margin-bottom: 10px;
+            page-break-inside: avoid;
+        }
+
+        .project-header {
+            font-size: 10.5pt;
+            font-weight: bold;
+            margin-bottom: 4px;
+        }
+
+        .project-list {
+            margin-left: 20px;
+            font-size: 10.5pt;
+            line-height: 1.4;
+        }
+
+        .project-list li {
+            margin-bottom: 3px;
+        }
+
+        .education-item {
+            font-size: 10.5pt;
+            margin-bottom: 6px;
+            line-height: 1.4;
+        }
+
+        .experience-item {
+            margin-bottom: 10px;
+            page-break-inside: avoid;
+        }
+
+        .experience-header {
+            font-size: 10.5pt;
+            font-weight: bold;
+            margin-bottom: 4px;
+        }
+
+        .experience-list {
+            margin-left: 20px;
+            font-size: 10.5pt;
+            line-height: 1.4;
+        }
+
+        .experience-list li {
+            margin-bottom: 3px;
+        }
+
+        @media print {
+            body {
+                padding: 0.5in 0.75in;
+                max-width: 100%;
+            }
+
+            a {
+                color: #0066cc !important;
+                text-decoration: underline !important;
+            }
+
+            h2 {
+                page-break-after: avoid;
+            }
+
+            .project, .experience-item {
+                page-break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>Troy Lussier</h1>
+        <div class="contact-info">
+            Kelowna, BC | 778-997-2165 | <a href="mailto:troylussier007@gmail.com">troylussier007@gmail.com</a><br>
+            <a href="https://www.linkedin.com/in/troy-lussier-3a4bb069/" target="_blank">linkedin.com/in/troy-lussier-3a4bb069</a> | 
+            <a href="https://github.com/troytoews69-code" target="_blank">github.com/troytoews69-code</a> | 
+            <a href="https://moodyspritestudios.com" target="_blank">moodyspritestudios.com</a>
+        </div>
+    </div>
+
+    <h2>Highlights of Qualifications</h2>
+    <ul class="highlights-list">
+        <li>Full-stack developer proficient in <strong>JavaScript (ES6+), Node.js, Express, MongoDB, React, HTML5, CSS3</strong>, with expertise in building RESTful APIs, JWT authentication, and deployment pipelines</li>
+        <li>Developed a <strong>full-stack health wellness tracking platform</strong> as capstone project, featuring modular Express API, MongoDB database design, automated testing suite (Mocha/Chai), and production deployment to Render</li>
+        <li>Created portfolio of interactive web applications including <strong>weather dashboard, task manager, quiz app, and calculator</strong>, showcasing API integration, responsive design, and modern JavaScript patterns</li>
+        <li><strong>20+ years of professional carpentry experience</strong> with transferable skills in project planning, problem-solving, attention to detail, team leadership, quality assurance, and delivering results under tight deadlines</li>
+    </ul>
+
+    <h2>Skills and Experience</h2>
+    <div class="skills-text">
+        <strong>Technical Skills:</strong> JavaScript (ES6+), Node.js, Express, MongoDB, Mongoose, React, HTML5, CSS3, REST APIs, JWT Authentication, Git, GitHub, Render, Postman, VS Code, Mocha, Chai, Supertest, mongodb-memory-server, Responsive Design, API Design, Error Handling, Deployment Pipelines
+    </div>
+
+    <h3 style="font-size: 11pt; font-weight: bold; margin-top: 8px; margin-bottom: 8px;">Technical Projects</h3>
+
+    <div class="project">
+        <div class="project-header">
+            <a href="https://github.com/troytoews69-code/project-meridian-backend" target="_blank">Women-Over-40 Health Wellness Tracker</a>, Full-Stack Developer, March 2026 – June 2026
+        </div>
+        <ul class="project-list">
+            <li>Built complete MERN stack wellness platform with daily check-in system, notes management, reminder scheduling, and customizable trend analysis for tracking health metrics over time</li>
+            <li>Designed and implemented modular Express REST API with JWT authentication, MongoDB models (users, check-ins, notes, reminders), ownership validation, one-check-in-per-day enforcement, and comprehensive error handling</li>
+            <li>Developed automated testing suite using Mocha, Chai, and Supertest with in-memory MongoDB for isolated test environments; deployed production backend to Render with environment-based configuration</li>
+        </ul>
+    </div>
+
+    <div class="project">
+        <div class="project-header">
+            <a href="https://moodyspritestudios.com" target="_blank">Interactive Web Application Portfolio</a>, Frontend Developer, January 2026 – Present
+        </div>
+        <ul class="project-list">
+            <li>Created collection of responsive web applications including <strong>weather dashboard with geolocation and 5-day forecast</strong>, interactive quiz app with score tracking, task manager with LocalStorage persistence, and scientific calculator</li>
+            <li>Implemented modern JavaScript patterns using async/await, fetch API for third-party integrations, DOM manipulation, event handling, and modular code architecture for maintainability</li>
+            <li>Designed mobile-first responsive layouts with CSS3 Grid/Flexbox, custom animations, accessibility features, and cross-browser compatibility testing</li>
+        </ul>
+    </div>
+
+    <div class="project">
+        <div class="project-header">
+            <a href="https://moodyspritestudios.com/weather-app.html" target="_blank">Weather Dashboard Application</a>, Frontend Developer, February 2026
+        </div>
+        <ul class="project-list">
+            <li>Developed real-time weather dashboard integrating OpenWeatherMap API with geolocation services, 5-day forecast display, and dynamic UI updates based on weather conditions</li>
+            <li>Implemented asynchronous JavaScript (async/await) for API calls, error handling for invalid locations, and responsive CSS design optimized for mobile and desktop viewing</li>
+            <li>Utilized local storage for recent search history and location preferences, demonstrating state management and data persistence techniques</li>
+        </ul>
+    </div>
+
+    <h2>Education</h2>
+    <div class="education-item">
+        <strong>Software Development Bootcamp</strong>, Circuit Stream × UBC Extended Learning, June 2026
+    </div>
+    <div class="education-item">
+        <strong>Red Seal Certification — Carpentry</strong>, British Columbia Institute of Technology (BCIT), October 2014
+    </div>
+    <div class="education-item">
+        <strong>Information Technology and Internet Technical Support Course</strong>, Patel Vocational School, January 2004
+    </div>
+
+    <h2>Professional Experience</h2>
+
+    <div class="experience-item">
+        <div class="experience-header">Carpenter, Sawchuk Developments, January 2017 – August 2019</div>
+        <ul class="experience-list">
+            <li>Managed full project lifecycles coordinating multiple trades, timelines, and deliverables while maintaining strict quality standards and adapting to evolving project requirements</li>
+            <li>Identified and resolved complex structural challenges through systematic troubleshooting and root-cause analysis, consistently delivering solutions under tight deadlines</li>
+        </ul>
+    </div>
+
+    <div class="experience-item">
+        <div class="experience-header">Finishing Carpenter, James Northey Finishing and Design, May 2017 – December 2017</div>
+        <ul class="experience-list">
+            <li>Executed precision finishing work requiring meticulous attention to detail, code compliance, and maintaining high-quality standards throughout project completion</li>
+        </ul>
+    </div>
+
+    <div class="experience-item">
+        <div class="experience-header">Carpenter, Best Personal, March 2014 – May 2017</div>
+        <ul class="experience-list">
+            <li>Collaborated with cross-functional teams and clients to gather requirements, communicate progress updates, and deliver projects meeting specifications and expectations</li>
+        </ul>
+    </div>
+
+</body>
+</html>
